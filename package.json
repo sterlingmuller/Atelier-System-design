@@ -1,0 +1,26 @@
+{
+  "name": "sdc",
+  "version": "1.0.0",
+  "description": "system design capstone - ratings and review widget",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js",
+    "k6": "k6 run server/script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEN16-SDC-Mewtwo/SDC-sterlo.git"
+  },
+  "author": "Sterling Muller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DEN16-SDC-Mewtwo/SDC-sterlo/issues"
+  },
+  "homepage": "https://github.com/DEN16-SDC-Mewtwo/SDC-sterlo#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.2",
+    "pg": "^8.7.1"
+  }
+}
