@@ -1,56 +1,19 @@
 const express = require ('express');
 const app = express();
-const axios = require('axios');
 const port = 3000;
 const db = require('../database');
-const { response } = require('express');
+const { getReviews } = require('./actions/reviews');
 
 app.listen(port, () => console.log('listening on port:', port));
 
 app.use(express.json());
 
 
-//helper functions
-
-function sortOpt (sort) {
-  if (sort === 'newest') {
-    return "ORDER BY date DESC"
-   } else if (sort === 'helpful') {
-     return "ORDER BY helpfulness" }
-       else if (sort === 'relevant') {
-         return "ORDER BY recommended DESC" }
-}
-
-function resultRange (resArr, page, count) {
-  page = Number(page);
-  count = Number(count);
-  let start = page * count;
-  return(resArr.slice(start, start + count));
-}
-
 //GET REVIEWS
 // reviews?page=0&count=2&sort=newest&product_id=5
 //linit and offset so set page and count in query
 
-app.get('/reviews', (req, res) => {
-  let { page = 0, count = 5, sort = "newest", product_id} = req.query;
-  let sql= `SELECT * FROM reviews WHERE product_id=${product_id}
-    ${sortOpt(sort)}`;
-
-  db.query(sql)
-    .then ( ({rows}) => {
-      console.log('rows:::', rows)
-      res.status(200).send(
-        {
-          'product': product_id,
-          'page': page,
-          'count': count,
-          'results': resultRange(rows, page, count)
-        }
-      );
-    })
-    .catch(console.log);
-});
+app.get('/reviews', getReviews);
 
 //GET META
 // reviews/meta?product_id=7
@@ -96,7 +59,10 @@ app.get('/reviews/meta', (req, res) => {
 })
 
 //POST REVIEWS
-// body: product_id: 1800000, rating: 4, summary: 'really fun', body: 'I had a good time with this product', reviewe_name: 'Johnny Skateboard', reviewer_email: 'shredderboy@w.com', date: current_timestamp, photos: ['nvervnenrv', 'evercwecw', 'rtevcwercw', characteristics: {14: 3, 15: 5, 16: 2} OR characteristics: {fit: 3, comfort: 2}
+/**
+ * example data
+ * body: product_id: 1800000, rating: 4, summary: 'really fun', body: 'I had a good time with this product', reviewe_name: 'Johnny Skateboard', reviewer_email: 'shredderboy@w.com', date: current_timestamp, photos: ['nvervnenrv', 'evercwecw', 'rtevcwercw', characteristics: {14: 3, 15: 5, 16: 2} OR characteristics: {fit: 3, comfort: 2}
+ */
 
 app.post('/reviews', (req, res) => {
   let { product_id, rating, summary, body, reviewer_name, reviewer_email, photos, characteristics, helpfulness } = req.body;
@@ -147,5 +113,3 @@ app.put('/reviews/:review_id/report', (req, res) => {
   .then (() => res.status(204).send("report update success!"))
   .catch (console.log);
 })
-
-//do I need to specify product for helpful / report updates?
