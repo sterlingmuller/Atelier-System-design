@@ -1,10 +1,12 @@
 const { Client, Pool } = require('pg');
-//connection pool?
+const dotenv = require ('dotenv');
+dotenv.config();
+
 const connection = new Pool ({
-  user: process.env.dbuser || 'postgres',
-  host: process.env.host || 'localhost',
+  user: process.env.DBUSER,
+  host: process.env.HOST,
   database: 'ratingsandreviewdb',
-  password: process.env.password || ''
+  password: process.env.PASSWORD
 })
 
 connection.connect();
