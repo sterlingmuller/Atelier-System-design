@@ -9,7 +9,7 @@ const connection = new Pool ({
   password: process.env.PASSWORD,
   port: 5432
 })
-
+console.log("env variables:::", process.env.DBUSER, process.env.HOST, process.env.PASSWORD);
 connection.connect();
 
 module.exports = connection;
