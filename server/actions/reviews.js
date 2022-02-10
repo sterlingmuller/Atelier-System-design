@@ -1,4 +1,5 @@
 const { sortOpt } = require("../utils");
+const db = require('../../database');
 
 module.exports = {
   getReviews(req, res) {
