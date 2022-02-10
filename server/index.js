@@ -9,19 +9,23 @@ app.listen(port, () => console.log('listening on port:', port));
 
 app.use(express.json());
 
-app.get('/loaderio-4759efd40f0b5528c44450679f2b26d2.txt', (req, res) => {
-  var options = {
-    root: path.join(__dirname)
-};
+// app.get('/loaderio-4759efd40f0b5528c44450679f2b26d2.txt', (req, res) => {
+//   var options = {
+//     root: path.join(__dirname)
+// };
 
-var fileName = '../loaderio-4759efd40f0b5528c44450679f2b26d2.txt';
-res.sendFile(fileName, options, function (err) {
-    if (err) {
-        next(err);
-    } else {
-        console.log('Sent:', fileName);
-    }
-});
+// var fileName = '../loaderio-4759efd40f0b5528c44450679f2b26d2.txt';
+// res.sendFile(fileName, options, function (err) {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log('Sent:', fileName);
+//     }
+// });
+// })
+
+app.get('/loaderio-4759efd40f0b5528c44450679f2b26d2.txt', (req, res) => {
+res.send('loaderio-4759efd40f0b5528c44450679f2b26d2');
 })
 
 
