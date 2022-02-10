@@ -2,11 +2,27 @@ const express = require ('express');
 const app = express();
 const port = 3000;
 const db = require('../database');
+const path = require('path');
 const { getReviews } = require('./actions/reviews');
 
 app.listen(port, () => console.log('listening on port:', port));
 
 app.use(express.json());
+
+app.get('/loaderio-4759efd40f0b5528c44450679f2b26d2.txt', (req, res) => {
+  var options = {
+    root: path.join(__dirname)
+};
+
+var fileName = '../loaderio-4759efd40f0b5528c44450679f2b26d2.txt';
+res.sendFile(fileName, options, function (err) {
+    if (err) {
+        next(err);
+    } else {
+        console.log('Sent:', fileName);
+    }
+});
+})
 
 
 //GET REVIEWS
