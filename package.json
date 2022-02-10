@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/index.js",
-    "k6": "k6 run server/script.js"
+    "k6": "k6 run server/tests/script.js"
   },
   "repository": {
     "type": "git",

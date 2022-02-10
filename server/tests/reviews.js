@@ -18,6 +18,5 @@ export const options = {
 
 export default function () {
   check (
-  http.get(`http://localhost:3000/reviews?page=1&count=2&sort=newest&product_id=${105432}`), {'is status 200': (r) => r.status === 200})
+  http.get(`http://localhost:3000/reviews?page=1&count=2&sort=newest&product_id=${105432}`), {'is status 200': (r) => r.status === 200})}
   // sleep(1);
-}
