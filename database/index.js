@@ -5,8 +5,9 @@ dotenv.config();
 const connection = new Pool ({
   user: process.env.DBUSER,
   host: process.env.HOST,
-  database: 'ratingsandreviewdb',
-  password: process.env.PASSWORD
+  database: 'ratingsandreview_remote',
+  password: process.env.PASSWORD,
+  port: 5432
 })
 
 connection.connect();
