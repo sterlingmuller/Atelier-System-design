@@ -29,7 +29,7 @@ app.use(express.json());
 // })
 
 app.get('/loaderio-bf0deaadc505dda9c56095f5898fadeb.txt', (req, res) => {
-  res.send('got it!');
+  res.send('loaderio-bf0deaadc505dda9c56095f5898fadeb');
   })
 
 
