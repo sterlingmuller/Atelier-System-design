@@ -24,9 +24,13 @@ app.use(express.json());
 // });
 // })
 
-app.get('/loaderio-4759efd40f0b5528c44450679f2b26d2.txt', (req, res) => {
-res.send('loaderio-4759efd40f0b5528c44450679f2b26d2');
-})
+// app.get('/loaderio-4759efd40f0b5528c44450679f2b26d2.txt', (req, res) => {
+// res.send('loaderio-4759efd40f0b5528c44450679f2b26d2');
+// })
+
+app.get('/loaderio-bf0deaadc505dda9c56095f5898fadeb.txt', (req, res) => {
+  res.send('got it!');
+  })
 
 
 //GET REVIEWS
